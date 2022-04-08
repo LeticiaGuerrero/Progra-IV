@@ -17,45 +17,30 @@
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-lg navbar-light bg-success mb-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
-                <a class="navbar-brand  text-light" href="#">::.. SISTENA ACADEMICO -- UGB ..::</a>
+                <a class="navbar-brand" href="#">SISTEMA ACADEMICO </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse  text-light" id="navbarNav">
+                <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link  text-light" href="#">Inicio</a>
+                            <a class="nav-link" href="#">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a @click="abrirForm('alumno')" class="nav-link  text-light" href="#">Alumnos</a>
+                            <a @click="abrirForm('alumno')" class="nav-link" href="#">Alumnos</a>
                         </li>
                         <li class="nav-item">
-                            <a @click="abrirForm('docente')" class="nav-link  text-light" href="#">Docentes</a>
-                        </li>
-                        <li class="nav-item">
-                            <a @click="abrirForm('materia')" class="nav-link  text-light" href="#">Materias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a @click="abrirForm('matricula')" class="nav-link  text-light" href="#">Matricula</a>
-                        </li>
-                        <li class="nav-item">
-                            <a @click="abrirForm('inscripcion')" class="nav-link  text-light" href="#">Inscripcion</a>
-                        </li>
-                        <li class="nav-item">
-                            <a @click="abrirForm('nota')" class="nav-link  text-light" href="#">Notas</a>
+                            <a @click="abrirForm('inscripcion')" class="nav-link" href="#">Inscripcion</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <h4 class="text-secondary text-center mt-2">Leticia Raquel Lopez Guerrero <span class="btn btn-outline-success">USIS028420</span></h4>
-        <h4 class="text-secondary text-center mt-2">Gisella Merary Lopez Guerrero <span class="btn btn-outline-success">USIS06418</span></h4>
-        <h4 class="text-secondary text-center mt-2">Elmer Antonio Angel Reyes <span class="btn btn-outline-success">USIS008520</span></h4>
-
-        <alumno-component v-bind:form="forms" ref="alumno" v-show="forms['alumno'].mostrar" class="m-4"></alumno-component>
+        <alumno-component v-bind:form="forms" ref="alumno" v-show="forms['alumno'].mostrar" ></alumno-component>
+        <inscripcion-component v-bind:form="forms" ref="inscripcion" v-show="forms['inscripcion'].mostrar" ><inscripcion-component>
     </div>
     <script src="{{ asset('js/app.js') }}"></script>
 </body>

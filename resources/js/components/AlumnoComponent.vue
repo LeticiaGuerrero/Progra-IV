@@ -1,11 +1,11 @@
 <template>
     <div id="appAlumno">
         <div class="card text-white" id="carAlumno">
-            <div class="card-header bg-secondary">
+            <div class="card-header text-white bg-dark">
                 Registro de Alumnos
                 <button type="button" class="btn-close text-end" @click="cerrarForm"></button>
             </div>
-            <div class="card-body text-dark bg-light">
+            <div class="card-header text-white bg-dark">
                 <form method="post" @submit.prevent="guardarAlumno" @reset="nuevoAlumno">
                     <div class="row p-1">
                         <div class="col col-md-2">Codigo:</div>
@@ -38,6 +38,17 @@
                         </div>
                     </div>
                     <div class="row p-1">
+                            <div class="col col-md-2">Carrera</div>
+                            <div class="col col-md-2">
+                                <select v-model="alumno.carrera" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                    <option  selected>Seleccionar Carrera</option>
+                                    <option value="Ingenieria En Sistemas y Redes Informaticas">Ingenieria En Sistemas</option>
+                                    <option value="Medicina">Medicina</option>
+                                    <option value="Artes Plasticas">Artes Plasticas</option>
+                                  </select>
+                            </div> 
+                        </div>
+                    <div class="row p-1">
                         <div class="col col-md-5 text-center">
                             <div v-if="alumno.mostrar_msg" class="alert alert-primary alert-dismissible fade show" role="alert">
                                 {{ alumno.msg }}
@@ -54,12 +65,12 @@
                 </form>
             </div>
         </div>
-        <div class="card text-white mt-2" id="carBuscarAlumno">
-            <div class="card-header bg-secondary">
+        <div class="card text-white bg-dark mb-3" id="carBuscarAlumno">
+            <div class="card-header text-white bg-dark">
                 Busqueda de Alumnos
                 <button type="button" class="btn-close" data-bs-dismiss="alert" data-bs-target="#carBuscarAlumno" aria-label="Close"></button>
             </div>
-            <div class="card-body bg-light">
+            <div class="card-body">
                 <table class="table table-dark table-hover">
                     <thead>
                         <tr>
@@ -73,6 +84,7 @@
                             <th>DIRECCION</th>
                             <th>TEL</th>
                             <th>DUI</th>
+                            <th>CARRERA</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -83,8 +95,10 @@
                             <td>{{item.direccion}}</td>
                             <td>{{item.telefono}}</td>
                             <td>{{item.dui}}</td>
+                            <td>{{item.carrera}}</td>
                             <td>
                                 <button class="btn btn-danger" @click="eliminarAlumno(item)">Eliminar</button>
+                                <button type="button" class="btn btn-success" @click="modificarAlumno(item)">Modificar</button>
                             </td>
                         </tr>
                     </tbody>
@@ -111,7 +125,8 @@
                     nombre: '',
                     direccion: '',
                     telefono: '',
-                    dui: ''
+                    dui: '',
+                    carrera: ''
                 }
             }
         },
@@ -226,6 +241,7 @@
                 this.alumno.direccion = '';
                 this.alumno.telefono = '';
                 this.alumno.dui = '';
+                this.alumno.carrera = '';
             },
             abrirStore(store, modo){
                 return db.transaction(store, modo).objectStore(store);
