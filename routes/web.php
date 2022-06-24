@@ -12,16 +12,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
-
-Route::apiResources([
-    'alumno'=>Alumnos::class,   
-]);
-
-Route::apiResources([
-    'inscripcion'=>Inscripcions::class,   
-]);
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('vehiculos', App\Http\Controllers\VehiculosControlador::class . '@index');
+Route::post('vehiculos', App\Http\Controllers\VehiculosControlador::class . '@store');
+Route::put('vehiculos/{id}', App\Http\Controllers\VehiculosControlador::class . '@update');
+Route::post('/vehiculos/eliminar', App\Http\Controllers\VehiculosControlador::class . '@destroy');
